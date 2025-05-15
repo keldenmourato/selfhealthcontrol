@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "798448726161",
+    "project_id": "projectopdm-8b5df",
+    "storage_bucket": "projectopdm-8b5df.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798448726161:android:8dcf802bef6e85cac08f30",
+        "android_client_info": {
+          "package_name": "com.pdm.selfhealthcontrol"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACkXMUMqtXpLrVAiT5nQu1Ne9ttfJTowY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798448726161:android:5db555788de7a9b8c08f30",
+        "android_client_info": {
+          "package_name": "com.selfhealthcontrol.selfhealthcontrol"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACkXMUMqtXpLrVAiT5nQu1Ne9ttfJTowY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
