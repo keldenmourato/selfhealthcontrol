@@ -60,7 +60,12 @@ class _RecuperarSenhaState extends State<RecuperarSenha> {
                           ),
                           onPressed: (){
                             recuperar();
-                            print('Link Enviado para o email!');
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('Email enviado!', style: TextStyle(color: Colors.green),),
+                                duration: Duration(seconds: 5),
+                              )
+                            );
                           },
                           child:Text("Enviar", style: TextStyle(color: Colors.white),),
 
