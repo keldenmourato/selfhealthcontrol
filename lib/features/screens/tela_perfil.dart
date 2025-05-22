@@ -23,7 +23,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
         title: Text('Editar $campo'),
         content: TextField(
           autofocus: true,
-          decoration: InputDecoration(hintText: 'Digite novo $campo'),
+          decoration: InputDecoration(hintText: 'Digite novo(a) $campo'),
           onChanged: (value) => novoValor = value,
         ),
         actions: [
@@ -154,6 +154,17 @@ class _TelaPerfilState extends State<TelaPerfil> {
                       text: userData['doenca_cronica']?.toString() ?? 'Não definido',
                       sectionName: 'Doenca cronica',
                       onPressed: () => editarCampo('doenca_cronica'),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: MyTextBox(
+                      text: userData['historico_medico']?.toString() ?? 'Não definido',
+                      sectionName: 'Historico Medico',
+                      onPressed: () => editarCampo('historico_medico'),
                     ),
                   ),
                 ],
