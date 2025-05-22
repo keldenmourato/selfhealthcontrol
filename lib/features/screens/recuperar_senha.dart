@@ -14,8 +14,8 @@ class _RecuperarSenhaState extends State<RecuperarSenha> {
 
   TextEditingController email = TextEditingController();
 
-  recuperar() async {
-    await FirebaseAuth.instance.sendPasswordResetEmail(email: email.text);
+  Future <void> recuperar() async {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email.text);
   }
 
   @override
@@ -60,21 +60,26 @@ class _RecuperarSenhaState extends State<RecuperarSenha> {
 
                           ),
                           onPressed: (){
-                            recuperar();
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text('Email enviado!', style: TextStyle(color: Colors.green),),
-                                duration: Duration(seconds: 10),
-                              )
-                            );
+                              recuperar();
 
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => TelaLogin()),
-                            );
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('Email enviado!', style: TextStyle(color: Colors.green),),
+                                    duration: Duration(seconds: 10),
+                                  )
+                              );
                           },
                           child:Text("Enviar", style: TextStyle(color: Colors.white),),
 
+                        ),
+                        TextButton(
+                            onPressed: (){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => TelaLogin()),
+                              );
+                            },
+                            child: Text('Voltar para a tela de login')
                         ),
 
                       ],
