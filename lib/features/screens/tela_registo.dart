@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:selfhealthcontrol/features/auth/wrapper.dart';
 import 'package:selfhealthcontrol/features/screens/tela_login.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TelaRegisto extends StatefulWidget {
   const TelaRegisto({super.key});
@@ -18,10 +18,21 @@ class _TelaRegistoState extends State<TelaRegisto> {
 
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+  TextEditingController confirmPassword = TextEditingController();
 
-  registo() async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email.text, password: password.text);
+
+  Future <void> registo() async {
+    UserCredential userCredential= await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email.text, password: password.text);
     Get.offAll(Wrapper());
+
+    FirebaseFirestore.instance
+        .collection('Users')
+        .doc(userCredential.user!.email)
+        .set({
+      'usuario': email.text.split("@")[0],
+
+    });
+
   }
 
   @override
@@ -75,6 +86,23 @@ class _TelaRegistoState extends State<TelaRegisto> {
                               ),
                             ],
                           ),
+                          SizedBox(height: 10,),
+                          Row(
+                            children: [
+                              SizedBox(width: 10,),
+                              Icon(Icons.lock, color: Colors.blue,size:34,),
+                              Expanded(
+                                child: TextFormField(
+                                  controller: confirmPassword,
+                                  decoration: InputDecoration(
+                                    labelText: 'repetir palavra-passe',
+                                    border: OutlineInputBorder(),
+                                  ),
+                                  obscureText: true,
+                                ),
+                              ),
+                            ],
+                          ),
                           SizedBox(height: 20,),
 
                           ElevatedButton(
@@ -108,7 +136,7 @@ class _TelaRegistoState extends State<TelaRegisto> {
               ),
             )
           ],
-        )
+        ),
     );
   }
 }
