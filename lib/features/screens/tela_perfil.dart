@@ -140,8 +140,19 @@ class _TelaPerfilState extends State<TelaPerfil> {
                 children: [
                   Expanded(
                     child: MyTextBox(
+                      text: userData['telefone']?.toString() ?? 'Não definido',
+                      sectionName: 'Telefone',
+                      onPressed: () => editarCampo('telefone'),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: MyTextBox(
                       text: userData['grupo_sanguineo']?.toString() ?? 'Não definido',
-                      sectionName: 'Grupo sanguineo',
+                      sectionName: 'Grupo Sanguineo',
                       onPressed: () => editarCampo('grupo_sanguineo'),
                     ),
                   ),
@@ -152,13 +163,14 @@ class _TelaPerfilState extends State<TelaPerfil> {
                   Expanded(
                     child: MyTextBox(
                       text: userData['doenca_cronica']?.toString() ?? 'Não definido',
-                      sectionName: 'Doenca cronica',
+                      sectionName: 'Doenca Cronica',
                       onPressed: () => editarCampo('doenca_cronica'),
                     ),
                   ),
                 ],
               ),
               Row(
+
                 children: [
                   Expanded(
                     child: MyTextBox(
