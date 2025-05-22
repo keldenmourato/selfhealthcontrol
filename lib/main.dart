@@ -28,6 +28,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       home: Wrapper(),
+      debugShowMaterialGrid: false,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

@@ -66,10 +66,6 @@ class _TelaPerfilState extends State<TelaPerfil> {
                 child: Column(
                   children: [
                     const Text('Dados do usuário não encontrados'),
-
-                    IconButton(onPressed: signOut, icon: const Icon(Icons.exit_to_app))
-
-
                   ],
                 )
             );
@@ -103,16 +99,23 @@ class _TelaPerfilState extends State<TelaPerfil> {
               ),
 
               // Campos editáveis
-              MyTextBox(
-                text: userData['nome']?.toString() ?? 'Não definido',
-                sectionName: 'Nome',
-                onPressed: () => editarCampo('nome'),
-              ),
-
-              MyTextBox(
-                text: userData['sobrenome']?.toString() ?? 'Não definido',
-                sectionName: 'Sobrenome',
-                onPressed: () => editarCampo('sobrenome'),
+              Row(
+                children: [
+                  Expanded(
+                      child: MyTextBox(
+                        text: userData['nome']?.toString() ?? 'Não definido',
+                        sectionName: 'Nome',
+                        onPressed: () => editarCampo('nome'),
+                      ),
+                  ),
+                  Expanded(
+                      child: MyTextBox(
+                        text: userData['sobrenome']?.toString() ?? 'Não definido',
+                        sectionName: 'Sobrenome',
+                        onPressed: () => editarCampo('sobrenome'),
+                      ),
+                  )
+                ],
               ),
 
               Row(
@@ -134,14 +137,33 @@ class _TelaPerfilState extends State<TelaPerfil> {
                   ),
                 ],
               ),
+              Row(
+                children: [
+                  Expanded(
+                    child: MyTextBox(
+                      text: userData['grupo_sanguineo']?.toString() ?? 'Não definido',
+                      sectionName: 'Grupo sanguineo',
+                      onPressed: () => editarCampo('grupo_sanguineo'),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: MyTextBox(
+                      text: userData['doenca_cronica']?.toString() ?? 'Não definido',
+                      sectionName: 'Doenca cronica',
+                      onPressed: () => editarCampo('doenca_cronica'),
+                    ),
+                  ),
+                ],
+              )
+
             ],
           );
         },
       ),
     );
-  }
-
-  void signOut() async{
-    await FirebaseAuth.instance.signOut();
   }
 }
