@@ -2,6 +2,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:selfhealthcontrol/features/screens/tela_perfil.dart';
 
 class TelaPrincipal extends StatefulWidget {
   const TelaPrincipal({super.key});
@@ -31,12 +32,18 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
       _paginaAtual = index;
     });
   }
+  void signOut() async{
+    await FirebaseAuth.instance.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Self Health Control'),
+        actions: [
+          IconButton(onPressed: signOut, icon: const Icon(Icons.exit_to_app)),
+        ],
         backgroundColor: Colors.green,
         centerTitle: true,
       ),
@@ -82,32 +89,4 @@ class TelaHistorico extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Center(child: Text('Tela Histórico'));
-}
-class TelaPerfil extends StatelessWidget {
-  TelaPerfil({super.key});
-
-   User? _user = FirebaseAuth.instance.currentUser;
-
-  @override
-  Widget build(BuildContext context) => Center(
-      //child: Text('Tela Perfil')
-
-    child: Column(
-      children: [
-        Center(
-          child: Text('Tela Perfil'),
-        )
-        ,
-        IconButton(
-            onPressed: (){
-              terminarSessao();
-            }
-        , icon: Icon(Icons.exit_to_app))
-      ],
-    ),
-  );
-
-  void terminarSessao() async{
-    await FirebaseAuth.instance.signOut();
-  }
 }
