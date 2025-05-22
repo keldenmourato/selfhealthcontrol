@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:selfhealthcontrol/features/screens/tela_login.dart';
 
 class RecuperarSenha extends StatefulWidget {
   const RecuperarSenha({super.key});
@@ -63,13 +64,19 @@ class _RecuperarSenhaState extends State<RecuperarSenha> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text('Email enviado!', style: TextStyle(color: Colors.green),),
-                                duration: Duration(seconds: 5),
+                                duration: Duration(seconds: 10),
                               )
+                            );
+
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => TelaLogin()),
                             );
                           },
                           child:Text("Enviar", style: TextStyle(color: Colors.white),),
 
                         ),
+
                       ],
                     )
                 ),
