@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:selfhealthcontrol/features/components/text_box.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../services/notificacoes.dart';
+
 class TelaPerfil extends StatefulWidget {
   const TelaPerfil({super.key});
 
@@ -78,7 +80,8 @@ class _TelaPerfilState extends State<TelaPerfil> {
               const SizedBox(height: 50),
 
               // Foto do perfil
-              const Icon(Icons.person, size: 72),
+              //const Icon(Icons.person, size: 72),
+              IconButton(onPressed: NotificationService().showTestNotification, icon: const Icon(Icons.person, size: 72)),
 
               // Email
               Text(

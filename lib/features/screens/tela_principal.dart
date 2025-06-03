@@ -2,7 +2,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:selfhealthcontrol/features/screens/tela_historico.dart';
+import 'package:selfhealthcontrol/features/screens/tela_lista_tarefas.dart';
 import 'package:selfhealthcontrol/features/screens/tela_perfil.dart';
+import 'package:selfhealthcontrol/features/services/notificacoes.dart';
 
 class TelaPrincipal extends StatefulWidget {
   const TelaPrincipal({super.key});
@@ -12,7 +16,7 @@ class TelaPrincipal extends StatefulWidget {
 }
 
 class _TelaPrincipalState extends State<TelaPrincipal> {
-  int _paginaAtual = 0;
+  int _paginaAtual = 1;
   late List<Widget> _telas;
 
   @override
@@ -20,11 +24,11 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
     super.initState();
 
     _telas = [
-      TelaAdicionar(),
-      TelaRelatorios(),
-      TelaHistorico(),
-      TelaPerfil()
+      TelaTarefas(),      // index 0
+      TelaHistorico(),    // index 1
+      TelaPerfil(),       // index 2
     ];
+
   }
 
   void _onItemTapped(int index) {
@@ -59,18 +63,18 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
         index: _paginaAtual,
         onTap: _onItemTapped,
         items: [
-          Icon(Icons.add, color: Colors.white),
-          Icon(Icons.bar_chart, color: Colors.white),
-          Icon(Icons.history, color: Colors.white),
-          Icon(Icons.person, color: Colors.white),
+          Icon(Icons.task, color: Colors.white),     // TelaTarefas
+          Icon(Icons.history, color: Colors.white),  // TelaHistorico
+          Icon(Icons.person, color: Colors.white),   // TelaPerfil
         ],
+
       ),
     );
   }
 }
 
 
-class TelaAdicionar extends StatelessWidget {
+/*class TelaAdicionar extends StatelessWidget {
   const TelaAdicionar({super.key});
 
   @override
@@ -82,11 +86,11 @@ class TelaRelatorios extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Center(child: Text('Tela Relatórios'));
-}
-
+}*/
+/*
 class TelaHistorico extends StatelessWidget {
   const TelaHistorico({super.key});
 
   @override
   Widget build(BuildContext context) => Center(child: Text('Tela Histórico'));
-}
+}*/

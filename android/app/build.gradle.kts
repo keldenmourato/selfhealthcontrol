@@ -16,6 +16,7 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+        isCoreLibraryDesugaringEnabled = true
     }
 
     kotlinOptions {
@@ -44,4 +45,14 @@ android {
 
 flutter {
     source = "../.."
+}
+dependencies {
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0")
+    // WorkManager (versão estável mais recente)
+    implementation("androidx.work:work-runtime-ktx:2.8.1")
+
+    // Firebase Firestore (versão mais recente com KTX)
+    implementation("com.google.firebase:firebase-firestore-ktx:24.9.1")
+
 }

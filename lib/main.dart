@@ -3,8 +3,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:selfhealthcontrol/features/auth/wrapper.dart';
 import 'package:selfhealthcontrol/firebase_options.dart';
+
+import 'features/services/historico.dart';
+import 'features/services/notificacoes.dart';
+import 'features/services/tarefas.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,7 +19,24 @@ void main() async {
   FirebaseFirestore.instance.settings = const Settings(
     persistenceEnabled: true,
   );
-  runApp(const MyApp());
+
+  final notificationService = NotificationService();
+  await notificationService.initialize();
+
+  // Verifica tarefas expiradas ao iniciar o app
+  final taskService = TaskService();
+  await taskService.checkAndMoveExpiredTasks();
+
+  runApp(
+    MultiProvider(
+      providers: [
+        Provider(create: (_) => notificationService),
+        Provider(create: (_) => taskService),
+        Provider(create: (_) => HistoryService()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
