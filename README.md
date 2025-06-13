@@ -1,16 +1,4 @@
 # selfhealthcontrol
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+No contexto atual, a gestão de medicamentos e o acompanhamento de tratamentos são desafios significativos para pacientes, médicos e enfermeiros. Muitas vezes, a falta de adesão à medicação, a dificuldade em monitorizar horários e a desorganização no registo de tomas podem comprometer a eficácia dos tratamentos.
+O presente trabalho visa trazer uma proposta de implementação de um aplicativo para o controle de medicações.
